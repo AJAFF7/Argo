@@ -18,8 +18,16 @@ spec:
         ports:
         - containerPort: 8000
         command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -33,4 +41,3 @@ spec:
       targetPort: 8000
       nodePort: 31000
   type: NodePort
-
