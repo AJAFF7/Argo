@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: dms-container
-        image: ajaff/zeta:alpine
+        image: ajaff/zeta:v1.1
         ports:
         - containerPort: 8282
         command: ["node", "index.js"]
