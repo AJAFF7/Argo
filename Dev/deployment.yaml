@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ecommerce-container
-        image: ajaff/crm:v1.1
+        image: ajaff/crm:v1.0
         ports:
         - containerPort: 8000
         command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
