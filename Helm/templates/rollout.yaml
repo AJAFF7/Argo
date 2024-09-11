@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: main-rollout
+  name: {{ include "crm-chart.fullname" . }}-rollout
   namespace: default
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -18,10 +18,11 @@ spec:
   template:
     metadata:
       labels:
-        app: crm-app
+        app: {{ include "crm-chart.name" . }}
     spec:
       containers:
-      - name: crm-app
+      - name: {{ include "crm-chart.name" . }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
         - containerPort: 8000
+
