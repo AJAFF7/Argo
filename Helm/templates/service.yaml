@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "crm-chart.fullname" . }}-service
+  name: ecommerce-service
 spec:
   selector:
-    app: {{ include "crm-chart.name" . }}
+    app: Ecommerce
   ports:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-      nodePort: 31000
+      nodePort: {{ .Values.service.nodePort }}
   type: NodePort
 
