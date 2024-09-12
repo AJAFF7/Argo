@@ -9,11 +9,15 @@ spec:
     matchLabels:
       app: crm-app
   strategy:
-    blueGreen:
-      activeService: crm-app-active  # The active service pointing to the stable version
-      previewService: crm-app-preview  # The preview service for the new version
-      autoPromotionEnabled: false  # Set to true to automatically promote after testing
-      scaleDownDelaySeconds: 30  # Time to wait before scaling down old version after promotion
+    canary:
+      steps:
+      - setWeight: 20
+      - pause:
+          duration: 30s
+      - setWeight: 50
+      - pause:
+          duration: 60s
+      - setWeight: 100
   template:
     metadata:
       labels:
