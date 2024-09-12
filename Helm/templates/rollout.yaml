@@ -5,6 +5,9 @@ metadata:
   namespace: default
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: crm-app
   strategy:
     canary:
       steps:
