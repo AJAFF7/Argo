@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "crm-chart.fullname" . }}
+  name: ecommerce-deployment
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -15,6 +15,7 @@ spec:
       containers:
       - name: ecommerce-container
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
 

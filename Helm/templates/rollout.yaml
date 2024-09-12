@@ -1,32 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: crm-application-crm-chart-rollout
+  name: main-rollout
   namespace: default
 spec:
   replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels:
-      app: crm-application-crm-chart
   strategy:
     canary:
       steps:
-        - setWeight: 20
-        - pause:
-            duration: 30s
-        - setWeight: 50
-        - pause:
-            duration: 60s
-        - setWeight: 100
+      - setWeight: 20
+      - pause:
+          duration: 30s
+      - setWeight: 50
+      - pause:
+          duration: 60s
+      - setWeight: 100
   template:
     metadata:
       labels:
-        app: crm-application-crm-chart
+        app: crm-app
     spec:
       containers:
-        - name: crm-chart
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          ports:
-            - containerPort: 8000
-              protocol: TCP
+      - name: crm-app
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 8000
 
