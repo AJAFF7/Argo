@@ -1,26 +1,30 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: ecommerce-rollout
+  name: main-rollout
   namespace: default
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: Ecommerce
+      app: crm-app
   strategy:
-    blueGreen:
-      activeService: ecommerce-active
-      previewService: ecommerce-preview
-      autoPromotionEnabled: false
-      scaleDownDelaySeconds: 30
+    canary:
+      steps:
+      - setWeight: 20
+      - pause:
+          duration: 30s
+      - setWeight: 50
+      - pause:
+          duration: 60s
+      - setWeight: 100
   template:
     metadata:
       labels:
-        app: Ecommerce
+        app: crm-app
     spec:
       containers:
-      - name: ecommerce
+      - name: crm-app
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
         - containerPort: 8000
