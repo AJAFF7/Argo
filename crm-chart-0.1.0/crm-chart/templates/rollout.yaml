@@ -1,32 +1,32 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: crm-application-crm-chart-rollout
-  namespace: default
+  name: {{ include "crm-chart.fullname" . }}
+  labels:
+    {{- include "crm-chart.labels" . | nindent 4 }}
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: crm-application-crm-chart
+      app: {{ include "crm-chart.name" . }}
   strategy:
     canary:
       steps:
         - setWeight: 20
-        - pause:
+          pause:
             duration: 30s
         - setWeight: 50
-        - pause:
+          pause:
             duration: 60s
         - setWeight: 100
   template:
     metadata:
       labels:
-        app: crm-application-crm-chart
+        app: {{ include "crm-chart.name" . }}
     spec:
       containers:
         - name: crm-chart
-          image: ajaff/crm:v1.1
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
             - containerPort: 8000
-              protocol: TCP
 
