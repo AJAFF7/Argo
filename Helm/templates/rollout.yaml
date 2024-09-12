@@ -4,7 +4,7 @@ metadata:
   name: crm-application-crm-chart-rollout
   namespace: default
 spec:
-  replicas: 4
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: crm-application-crm-chart
@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: crm-chart
-          image: ajaff/crm:v1.1
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 8000
               protocol: TCP
