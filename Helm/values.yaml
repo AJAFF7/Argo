@@ -1,6 +1,6 @@
 image:
   repository: ajaff/crm
-  tag: v1.1  # Default version, can be updated here for both Deployment and Rollout
+  tag: v1.0  # Default version, can be updated here for both Deployment and Rollout
 
 replicaCount: 2  # Adjust this for the rollout and deployment
 
