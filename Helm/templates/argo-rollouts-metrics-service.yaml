@@ -9,4 +9,4 @@ spec:
       targetPort: 8000
       name: metrics
   selector:
-    app: argo-rollouts
+    app.kubernetes.io/name: argo-rollouts
