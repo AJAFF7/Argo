@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: argo-rollouts-metrics
+  namespace: argo-rollouts
+spec:
+  ports:
+    - port: 8000
+      targetPort: 8000
+      name: metrics
+  selector:
+    app: argo-rollouts
