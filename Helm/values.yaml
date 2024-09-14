@@ -1,6 +1,6 @@
 image:
   repository: ajaff/crm
-  tag: v1.0
+  tag: v1.1
 
 replicaCount: 3  # Adjust this for the rollout and deployment
 
