@@ -1,0 +1,89 @@
+---
+# Source: crm-chart/templates/argo-rollouts-metrics-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: argo-rollouts-metrics
+  namespace: argo-rollouts
+spec:
+  ports:
+    - port: 8090
+      targetPort: 8090
+      name: metrics
+  selector:
+    app.kubernetes.io/name: argo-rollouts
+---
+# Source: crm-chart/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecommerce-service
+spec:
+  selector:
+    app: Ecommerce
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 31000
+  type: NodePort
+---
+# Source: crm-chart/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: Ecommerce
+  template:
+    metadata:
+      labels:
+        app: Ecommerce
+    spec:
+      containers:
+      - name: ecommerce-container
+        image: "ajaff/crm:v1.1"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+---
+# Source: crm-chart/templates/rollout.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: main-rollout
+  namespace: default
+  annotations:
+    meta.helm.sh/release-name: argo-rollouts
+    meta.helm.sh/release-namespace: argo-rollouts
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: argo-rollouts
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: crm-app
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause:
+          duration: 30s
+      - setWeight: 50
+      - pause:
+          duration: 60s
+      - setWeight: 100
+  template:
+    metadata:
+      labels:
+        app: crm-app
+    spec:
+      containers:
+      - name: crm-app
+        image: "ajaff/crm:v1.1"
+        ports:
+        - containerPort: 8000
