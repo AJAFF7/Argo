@@ -3,6 +3,12 @@ kind: Rollout
 metadata:
   name: main-rollout
   namespace: default
+  annotations:
+    meta.helm.sh/release-name: argo-rollouts
+    meta.helm.sh/release-namespace: argo-rollouts
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: argo-rollouts
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
