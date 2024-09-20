@@ -6,14 +6,14 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: Ecommerce
+      app: ecommerce
   template:
     metadata:
       labels:
-        app: Ecommerce
+        app: ecommerce
     spec:
       containers:
-      - name: ecommerce-container
+      - name: ecommerce
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: Always
         ports:

@@ -7,7 +7,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: crm-app
+      app: ecommerce
   strategy:
     canary:
       steps:
@@ -21,10 +21,10 @@ spec:
   template:
     metadata:
       labels:
-        app: crm-app
+        app: ecommerce
     spec:
       containers:
-      - name: crm-app
+      - name: ecommerce
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
         - containerPort: 8000
