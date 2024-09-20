@@ -4,7 +4,7 @@ metadata:
   name: ecommerce-service
 spec:
   selector:
-    app: Ecommerce
+    app: ecommerce
   ports:
     - protocol: TCP
       port: 8000
