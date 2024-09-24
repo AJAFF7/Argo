@@ -2,7 +2,7 @@ image:
   repository: ajaff/crm
   tag: v1.1
 
-replicaCount: 3  # Adjust this for the rollout and deployment
+replicaCount: 3  
 
 service:
-  nodePort: 31000  # Specify a unique port number
+  nodePort: 31000  
