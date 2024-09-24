@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: main-rollout
+  name: main-rollout-1
   namespace: default
 spec:
   replicas: {{ .Values.replicaCount }}
