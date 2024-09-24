@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: multi-app-rollout
+  name: dms-rollout
   namespace: default
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: multi-app  # Generalized label for multiple apps
+      app: dms-app
   strategy:
     canary:
       steps:
@@ -21,12 +21,11 @@ spec:
   template:
     metadata:
       labels:
-        app: multi-app  # Generalized label for multiple apps
+        app: dms-app
     spec:
       containers:
-      - name: crm-app
-        image: "{{ .Values.crmImage.repository }}:{{ .Values.crmImage.tag }}"
+      - name: dms-app
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: 8000  # CRM app port
-     
+        - containerPort: 8282
 

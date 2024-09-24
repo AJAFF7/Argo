@@ -1,4 +1,4 @@
-crmImage:
+image:
   repository: ajaff/crm
   tag: v1.1
 

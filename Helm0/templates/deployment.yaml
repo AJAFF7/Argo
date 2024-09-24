@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ecommerce
-        image: "{{ .Values.crmImage.repository }}:{{ .Values.crmImage.tag }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
