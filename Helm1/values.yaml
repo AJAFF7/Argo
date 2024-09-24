@@ -1,0 +1,8 @@
+image:
+  repository: ajaff/dms
+  tag: v1.1
+
+replicaCount: 3  
+
+service:
+  nodePort: 30000  
