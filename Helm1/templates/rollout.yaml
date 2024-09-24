@@ -27,5 +27,5 @@ spec:
       - name: dms-app
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: 8000
+        - containerPort: 8282
 

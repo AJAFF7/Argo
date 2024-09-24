@@ -9,8 +9,8 @@ spec:
     app: dms
   ports:
     - protocol: TCP
-      port: 8000
-      targetPort: 8000
+      port: 8282
+      targetPort: 8282
       nodePort: 30000
   #type: NodePort
 
