@@ -1,9 +1,31 @@
+# values.yaml
+
+# Configuration for the CRM application
 image:
   repository: ajaff/crm
   tag: v1.1
 
 replicaCount: 3  # Adjust this for the rollout and deployment
 
-service:
-  nodePort: 31000  # Specify a unique port number
+# Configuration for the NGINX server
+nginx:
+  replicaCount: 1
+  image:
+    repository: nginx
+    tag: latest
+  sslSecretName: nginx-ssl-secret  # Name of the secret for SSL certificates
+  configMapName: nginx-config        # Name of the ConfigMap for NGINX config
+
+
+
+
+
+#image:
+#  repository: ajaff/crm
+#  tag: v1.1
+
+#replicaCount: 3  # Adjust this for the rollout and deployment
+
+#service:
+#  nodePort: 31000  # Specify a unique port number
 
