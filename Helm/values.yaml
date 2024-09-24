@@ -9,12 +9,13 @@ replicaCount: 3  # Adjust this for the rollout and deployment
 
 # Configuration for the NGINX server
 nginx:
-  replicaCount: 1
+  replicaCount: 2
   image:
     repository: nginx
     tag: latest
-  sslSecretName: nginx-ssl-secret  # Name of the secret for SSL certificates
-  configMapName: nginx-config        # Name of the ConfigMap for NGINX config
+  configMapName: nginx-config
+  sslSecretName: nginx-ssl-secret
+
 
 
 
