@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: dms
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: "{{ .Values.dmsImage.repository }}:{{ .Values.dmsImage.tag }}"
         imagePullPolicy: Always
         ports:
         - containerPort: 8282
