@@ -12,5 +12,5 @@ spec:
       port: 8282
       targetPort: 8282
       nodePort: 30000
-  #type: NodePort
+  type: NodePort
 
