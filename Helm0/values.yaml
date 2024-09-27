@@ -4,5 +4,5 @@ image:
 
 replicaCount: 2
 
-service:
-  nodePort: 31000  
+#service:
+#  nodePort: 31000  
