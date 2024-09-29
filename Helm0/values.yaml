@@ -4,10 +4,6 @@ image:
 
 replicaCount: 2
 
-extraArgs:
-  kubelet-insecure-tls: "true"
-
-# Uncomment and modify if you want to set a specific nodePort
 # service:
 #   nodePort: 31000
 
