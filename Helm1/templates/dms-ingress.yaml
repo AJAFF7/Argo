@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: dms.local   # Custom domain for local access
+    - host: dms.ajaf.my.id   # Custom domain for local access
       http:
         paths:
           - path: /
