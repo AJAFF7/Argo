@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-exporter
+  namespace: monitoring  # Make sure this matches the namespace of the DaemonSet
+spec:
+  type: NodePort  # Change service type to NodePort
+  selector:
+    app: node-exporter
+  ports:
+  - port: 9100
+    targetPort: 9100
+    protocol: TCP
+    nodePort: 30600  # You can specify the nodePort or let Kubernetes assign one
+
