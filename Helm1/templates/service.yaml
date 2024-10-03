@@ -4,7 +4,7 @@ metadata:
   name: dms-service
   namespace: default
 spec:
-#  type:   # Change to ClusterIP for internal routing via Ingress
+  type: LoadBalancer   # Change to ClusterIP for internal routing via Ingress
   selector:
     app: dms-app
   ports:
