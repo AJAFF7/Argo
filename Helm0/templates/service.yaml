@@ -4,7 +4,7 @@ metadata:
   name: crm-service
   namespace: default
 spec:
-#  type: LoadBalancer # Change to ClusterIP for internal routing via Ingress
+  type: LoadBalancer # Change to ClusterIP for internal routing via Ingress
   selector:
     app: crm-app
   ports:
