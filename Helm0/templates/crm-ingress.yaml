@@ -11,7 +11,7 @@ spec:
     - host: crm.ajaf.my.id   # Custom domain for local access
       http:
         paths:
-          - path: /
+          - path: /crm
             pathType: Prefix
             backend:
               service:
