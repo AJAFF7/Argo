@@ -26,6 +26,7 @@ spec:
       containers:
       - name: crm-app
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: Always  # Ensures the latest image is always pulled
         ports:
         - containerPort: 8000
         resources:
