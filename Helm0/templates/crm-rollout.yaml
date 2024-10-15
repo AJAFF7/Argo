@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1alpha1
+\apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: crm-rollout
@@ -28,4 +28,9 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
         - containerPort: 8000
+        resources:
+          requests:
+            memory: "100Mi"  # Minimum memory request
+          limits:
+            memory: "100Mi"   # Maximum memory limit
 
