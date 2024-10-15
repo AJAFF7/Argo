@@ -1,4 +1,4 @@
-\apiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: crm-rollout
@@ -29,5 +29,9 @@ spec:
         imagePullPolicy: Always  # Ensures the latest image is always pulled
         ports:
         - containerPort: 8000
-
+        resources:
+          limits:
+            memory: "100Mi"  # Set memory limit to 100MB
+          requests:
+            memory: "100Mi"  # Optional: set a memory request to match the limit
 
