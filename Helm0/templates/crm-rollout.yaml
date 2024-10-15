@@ -29,9 +29,5 @@ spec:
         imagePullPolicy: Always  # Ensures the latest image is always pulled
         ports:
         - containerPort: 8000
-#        resources:
-#          requests:
-#            memory: "100Mi"  # Minimum memory request
-#          limits:
-#            memory: "100Mi"   # Maximum memory limit
+
 
