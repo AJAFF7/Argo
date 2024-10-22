@@ -1,0 +1,16 @@
+services:
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager
+    container_name: NginxPM
+    ports:
+      - 8383:80    # HTTP (use 8383 on host for HTTP)
+      - 81:81      # Admin interface (use 8081 on host for admin)
+      - 8443:443   # HTTPS (use 8443 on host for HTTPS)
+    volumes:
+      - /home/dev/Apps/Nginx-Proxy-Manager/docker/volumes/nginx-proxy-manager/data:/data
+      - /home/dev/Apps/Nginx-Proxy-Manager/docker/volumes/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - /etc/nginx/ssl:/etc/nginx/ssl  # Add this line to mount your SSL certificates
+    restart: unless-stopped
+
+
+
