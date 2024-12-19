@@ -31,9 +31,9 @@ spec:
         - containerPort: 27017
         resources:
           limits:
-            memory: "100Mi"  # Set memory limit to 100MB
+            memory: "500Mi"  # Set memory limit to 100MB
           requests:
-            memory: "100Mi"  # Optional: set a memory request to match the limit
+            memory: "500Mi"  # Optional: set a memory request to match the limit
         env:
           - name: MONGO_INITDB_ROOT_USERNAME
             value: "jaff"
